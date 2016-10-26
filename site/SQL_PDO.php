@@ -1,8 +1,8 @@
 <?php
-    $host = ('https://intprg-wspace-aporter87.c9users.io/');
+    $host = getenv("IP");
     $port = 3306;
     $db = "TeamProject";
-    $user = ('aporter87');
+    $user = getenv('C9_USER');
     $pass = "";
     $sql = '**NO DB HANDLE**';
     $flag = false;
