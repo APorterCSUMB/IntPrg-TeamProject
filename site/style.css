@@ -1,0 +1,82 @@
+body{
+    background-color:#ccddff;
+}
+[id="supercontainer"]{
+    padding:20px;
+    width:60%;
+    margin:auto;
+    border:5px solid;
+    border-radius:8%;
+    border-color:gray;
+    background-color:#eeeeee;
+}
+table{
+    margin:auto;
+}
+h1{
+    text-align:center;
+    padding:20px;
+    background:#cccccc;
+    max-width: 600px;
+    margin:auto;
+    border:0px solid;
+    border-radius:20px;
+}
+.displayTable tr:first-child td{
+    text-decoration: underline;
+    font-weight: bold;
+    font-size:30px;
+    background-color:#99aadd;
+    border:0px solid;
+    border-radius:20px;
+}
+.sortFilter{
+    padding:15px;
+    font-weight: bold;
+    background-color:#aaddaa;
+    border:0px solid;
+    border-radius:20px;
+    margin-top:20px;
+}
+.sortFilter input[type="submit"]{
+    height:40px;
+}
+.info img{
+    height:50px;
+    width:50px;
+    vertical-align:center;
+}
+.product{
+    text-align:center;
+}
+.info{
+    padding:5px;
+    max-width:300px;
+    border:2px solid;
+    border-color:black;
+    border-radius:10px;
+    background-color:#eeeeee;
+}
+td{
+    text-align:center;
+    padding:8px;
+}
+.desc{
+    width:150px;
+}
+
+.clicker {
+text-decoration: underline;
+font-weight: bold;
+outline:none;
+cursor:pointer;
+margin:auto;
+}
+.hiddendiv{
+margin:auto;
+display:none;
+}
+
+.clicker:focus + .hiddendiv{
+display:block;
+}
