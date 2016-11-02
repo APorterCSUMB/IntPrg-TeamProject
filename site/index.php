@@ -68,6 +68,7 @@
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $stmt = "select * from Products natural join ProductType";
                     $flag = false;
+                    // TODO - FILTER BASED ON SIMPLE CHECKBOX
                     if(!empty($price)){
                         $stmt = $stmt." WHERE price <= ".$price;
                         $flag = true;
@@ -83,6 +84,7 @@
                     if(!empty($sort)){
                         $stmt = $stmt." ORDER BY ".$sort;
                     }
+                    // TODO - SORT ASC OR DESC BASED ON RADIO BUTTON
                 }
                 $stmt = $sql->prepare($stmt);
                 $flag = $stmt->execute();
