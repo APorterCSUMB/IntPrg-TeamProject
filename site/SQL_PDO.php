@@ -3,7 +3,7 @@
     // NO TEAM MEMBER SHALL EDIT THIS FILE WITHOUT CONFERENCING THE REST OF THE TEAM FIRST
     // YOU WILL BE FIRED AND WE WILL TAKE BACK ALL OF YOUR BONUS PAY FROM THE LAST SIX MONTHS
     
-    $host = 'https://intprg-wspace-aporter87.c9users.io/';
+    $host = 'intprg-wspace-aporter87.c9users.io';
     $port = 3306;
     $db = "TeamProject";
     $user = "aporter87";
