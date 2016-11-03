@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -42,7 +43,6 @@
                     <form method="POST" action="">
                     <tr>
                         <td>
-                        </td>
                         <td>
                             SORT BY:<br><br>
                             <input type="radio" name="sort" value="productName"'.(!strcmp($sort,"productName")?'checked':'').'>Name
@@ -58,10 +58,13 @@
                             Healthy Choice: <input type="checkbox" name="healthy" value="set" '.(!strcmp($healthyTmp, 'set')?'checked':'').'>
                         </td>
                         <td>
-                            <input type="submit" value="SORT THE MENU">
+                            <input type="submit" value="SORT THE MENU"></form>
+                            <br><hr size=5 style="background-color:black;">
+                            <form action="cart.php" method="GET"><input type="submit" value="VIEW CART"></form>
+                            <hr size=2 style="background-color:black;width:66%;">
+                            (# of Items: '.( isset( $_SESSION[ 'cart' ] ) ? sizeof( $_SESSION[ 'cart' ] ) : 0 ).')
                         </td>
                     </tr>
-                    </form>
                 </table>';
                 $stmt = "select * from Products natural join ProductType order by price";
                 $id = $name = $description = $cost = $calories = $health = $productID = "";
@@ -108,6 +111,9 @@
                             <td>
                                 Type
                             </td>
+                            <td>
+                                Buy It
+                            </td>
                         </tr>
                 
                 ';
@@ -121,7 +127,7 @@
                             echo '<td class="info"><img src="happy.png"></td>';
                         } else{echo '<td class="info"><img src="sad.png"></td>';}
                         echo '<td class="info">'.$product['TypeDesc'].'</td>';
-                    
+                        echo '<td class="info"><form method="POST" action="cart.php"><input type="submit" name="'.$product['productID'].'" value="Add to Cart"></form></td>';
                     echo '</tr>';
                 }
                 echo '</table>';
