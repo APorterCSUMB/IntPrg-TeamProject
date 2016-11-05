@@ -57,6 +57,12 @@
                             <br><br>
                             Healthy Choice: <input type="checkbox" name="healthy" value="set" '.(!strcmp($healthyTmp, 'set')?'checked':'').'>
                         </td>
+                         <td>
+                        ORDER BY: <select name = "orderby" size=1>
+                        <option value= "ASC"> ASC</option>
+                        <option value = "DESC"> DESC</option>
+                        </select>
+                        </td>
                         <td>
                             <input type="submit" value="SORT THE MENU">
                         </td>
@@ -80,8 +86,13 @@
                             $stmt = $stmt." WHERE healthyChoice=1";
                         }
                     }
-                    if(!empty($sort)){
+                    if(!empty($sort)&& $_POST["orderby"] == "ASC"){
                         $stmt = $stmt." ORDER BY ".$sort;
+                         $stmt = $stmt. " ASC";
+                    }
+                    else{
+                         $stmt = $stmt." ORDER BY ".$sort;
+                        $stmt = $stmt. " DESC";
                     }
                 }
                 $stmt = $sql->prepare($stmt);
