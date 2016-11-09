@@ -124,12 +124,12 @@
                             $stmt = $stmt." WHERE TypeID=10300";
                         }
                     }
-                    if(!empty($sort)&& $_POST["orderby"] == "ASC"){
+                    if($ascend == "ASC"){
                         $stmt = $stmt." ORDER BY ".$sort;
-                         $stmt = $stmt. " ASC";
+                        $stmt = $stmt. " ASC";
                     }
                     else{
-                         $stmt = $stmt." ORDER BY ".$sort;
+                        $stmt = $stmt." ORDER BY ".$sort;
                         $stmt = $stmt. " DESC";
                     }
                 }
