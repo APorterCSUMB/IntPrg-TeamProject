@@ -19,8 +19,17 @@
             }
             echo'
             <h1>OTTER EXPRESS MENU</h1>
+            <table class="sortFilter">
+            <tr>
+            <td>
             <form method="GET" action="index.php" style="text-align:center;margin:20px;"><input type="submit" value="Back To Menu"></form>
-            <form method="POST" action="cart.php" style="text-align:center;margin:20px;"><input type="submit" name="true" value="Empty Cart"></form>';
+            </td>
+            <td>
+            <form method="POST" action="cart.php" style="text-align:center;margin:20px;"><input type="submit" name="true" value="Empty Cart"></form>
+            </td>
+            </tr>
+            </table>
+            ';
             if($flag){ // DB CONNECTION IS MANDATORY
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $stmt = "SELECT * FROM Products NATURAL JOIN ProductType WHERE productID=".array_search ('Add to Cart', $_POST);
