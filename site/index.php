@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <?php session_start();?>
+=======
+>>>>>>> Brandon
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -8,16 +11,27 @@
     <body>
         <?php
             include_once'SQL_PDO.php';
+<<<<<<< HEAD
             $sort = $price = $healthy = $ascend = "";
             
             // CLEAN UP INCOMING DATA IF NECESSARY
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sortTmp = $_POST["sort"];
+=======
+            $sort = $price = $healthy = "";
+            
+            // CLEAN UP INCOMING DATA IF NECESSARY
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $sortTmp = ($_POST["sort"]);
+>>>>>>> Brandon
                 $priceTmp = $_POST["price"];
                 $healthyTmp = $_POST["healthy"];
                 $lowCal = $_POST["lowCal"];
                 $fullMeal = $_POST["fullMeal"];
+<<<<<<< HEAD
                 $ascend = $_POST['ascend'];
+=======
+>>>>>>> Brandon
                 
                 // ERROR BLOCK, ALL ERRORS SET CUSTOM ERROR MESSAGES
                 // - SORT PARSING -
@@ -35,6 +49,10 @@
                     $healthy = 'set';
                 }
                 else{$healthy = "";}
+<<<<<<< HEAD
+=======
+                
+>>>>>>> Brandon
                 if(!strcmp($lowCal, 'set')){
                     $lowCal = 'set';
                 }
@@ -45,6 +63,10 @@
                 }
                 else{$fullMeal = "";}
                 
+<<<<<<< HEAD
+=======
+                
+>>>>>>> Brandon
             }
             
             if($flag){
@@ -54,12 +76,18 @@
                     <form method="POST" action="">
                     <tr>
                         <td>
+<<<<<<< HEAD
+=======
+                        </td>
+                        <td>
+>>>>>>> Brandon
                             SORT BY:<br><br>
                             <input type="radio" name="sort" value="productName"'.(!strcmp($sort,"productName")?'checked':'').'>Name
                             <br>
                             <input type="radio" name="sort" value="price"'.(!strcmp($sort,"price")?'checked':'').'>Price
                             <br>
                             <input type="radio" name="sort" value="TypeDesc"'.(((strcmp($sort,'productName'))&&(strcmp($sort,'price')))?'checked':'').'>Type
+<<<<<<< HEAD
                             <br><br>
                             ORDER BY: <select name="ascend" size=1>
                             <option value= "ASC" '.(!strcmp($ascend,"ASC")?'selected':'').'> ASC</option>
@@ -71,10 +99,20 @@
                                 <legend>Filter By:</legend>
                                 Max Price: $<input type="text" name="price" style="width:50px" value='.($price?$price:'').'>
                                 <br><br>
+=======
+                        </td>
+                        <td>
+                            FILTER BY:<br><br>
+                            Max Price: $<input type="text" name="price" style="width:50px" value='.($price?$price:'').'>
+                            <br><br>
+                            <fieldset>
+                                <legend>Filter By:</legend>
+>>>>>>> Brandon
                                 Healthy Choice: <input type="checkbox" name="healthy" value="set" '.(!strcmp($healthyTmp, 'set')?'checked':'').'><br>
                                 Low Calorie Choice: <input type="checkbox" name="lowCal" value="set" '.(!strcmp($lowCal, 'set')?'checked':'').'><br>
                                 Full Meal Choice: <input type="checkbox" name="fullMeal" value="set" '.(!strcmp($fullMeal, 'set')?'checked':'').'>
                             </fieldset>
+<<<<<<< HEAD
                         </td>
                         <td>
                             <input type="submit" value="SORT THE MENU"></form>
@@ -91,6 +129,21 @@
                     $stmt = "select * from Products natural join ProductType natural join Producer";
                     $flag = false;
                     // TODO - FILTER BASED ON SIMPLE CHECKBOX
+=======
+                            
+                        </td>
+                        <td>
+                            <input type="submit" value="SORT THE MENU">
+                        </td>
+                    </tr>
+                    </form>
+                </table>';
+                $stmt = "select * from Products natural join ProductType order by price";
+                $id = $name = $description = $cost = $calories = $health = $productID = "";
+                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    $stmt = "select * from Products natural join ProductType";
+                    $flag = false;
+>>>>>>> Brandon
                     if(!empty($price)){
                         $stmt = $stmt." WHERE price <= ".$price;
                         $flag = true;
@@ -106,10 +159,17 @@
                     }
                     if(!empty($lowCal)){
                         if($flag){
+<<<<<<< HEAD
                             $stmt = $stmt." AND calories <= 200";
                         }
                         else{
                             $stmt = $stmt." WHERE calories <= 200";
+=======
+                            $stmt = $stmt." AND calories < 151";
+                        }
+                        else{
+                            $stmt = $stmt." WHERE calories < 151";
+>>>>>>> Brandon
                             $flag = true;
                         }
                     }
@@ -121,6 +181,7 @@
                             $stmt = $stmt." WHERE TypeID=10300";
                         }
                     }
+<<<<<<< HEAD
                     if(!empty($sort)&& $_POST["orderby"] == "ASC"){
                         $stmt = $stmt." ORDER BY ".$sort;
                          $stmt = $stmt. " ASC";
@@ -128,6 +189,10 @@
                     else{
                          $stmt = $stmt." ORDER BY ".$sort;
                         $stmt = $stmt. " DESC";
+=======
+                    if(!empty($sort)){
+                        $stmt = $stmt." ORDER BY ".$sort;
+>>>>>>> Brandon
                     }
                 }
                 $stmt = $sql->prepare($stmt);
@@ -152,12 +217,15 @@
                             <td>
                                 Type
                             </td>
+<<<<<<< HEAD
                             <td>
                                 Producer
                             </td>
                             <td>
                                 Buy It
                             </td>
+=======
+>>>>>>> Brandon
                         </tr>
                 
                 ';
@@ -171,8 +239,12 @@
                             echo '<td class="info"><img src="happy.png"></td>';
                         } else{echo '<td class="info"><img src="sad.png"></td>';}
                         echo '<td class="info">'.$product['TypeDesc'].'</td>';
+<<<<<<< HEAD
                         echo '<td class="info">'.$product['producerName'].'</td>';
                         echo '<td class="info"><form method="POST" action="cart.php"><input type="submit" name="'.$product['productID'].'" value="Add to Cart"></form></td>';
+=======
+                    
+>>>>>>> Brandon
                     echo '</tr>';
                 }
                 echo '</table>';
