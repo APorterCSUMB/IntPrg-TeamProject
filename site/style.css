@@ -39,7 +39,11 @@ h1{
     margin-top:20px;
 }
 .sortFilter input[type="submit"]{
+<<<<<<< HEAD
     height:30px;
+=======
+    height:40px;
+>>>>>>> master
 }
 .info img{
     height:50px;

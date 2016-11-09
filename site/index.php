@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <?php session_start();?>
+=======
+>>>>>>> master
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -34,7 +37,6 @@
                     $healthy = 'set';
                 }
                 else{$healthy = "";}
-                
                 if(!strcmp($lowCal, 'set')){
                     $lowCal = 'set';
                 }
@@ -53,7 +55,6 @@
                 <table class="sortFilter">
                     <form method="POST" action="">
                     <tr>
-                        <td>
                         <td>
                             SORT BY:<br><br>
                             <input type="radio" name="sort" value="productName"'.(!strcmp($sort,"productName")?'checked':'').'>Name
