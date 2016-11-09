@@ -1,3 +1,4 @@
+
 <?php session_start();?>
 <!DOCTYPE HTML>
 <html>
@@ -8,7 +9,7 @@
     <body>
         <?php
             include_once'SQL_PDO.php';
-            $sort = $price = $healthy = "";
+            $sort = $price = $healthy = $ascend = "";
             
             // CLEAN UP INCOMING DATA IF NECESSARY
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -17,6 +18,7 @@
                 $healthyTmp = $_POST["healthy"];
                 $lowCal = $_POST["lowCal"];
                 $fullMeal = $_POST["fullMeal"];
+                $ascend = $_POST['ascend'];
                 
                 // ERROR BLOCK, ALL ERRORS SET CUSTOM ERROR MESSAGES
                 // - SORT PARSING -
@@ -60,9 +62,9 @@
                             <br>
                             <input type="radio" name="sort" value="TypeDesc"'.(((strcmp($sort,'productName'))&&(strcmp($sort,'price')))?'checked':'').'>Type
                             <br><br>
-                            ORDER BY: <select name = "orderby" size=1>
-                            <option value= "ASC"> ASC</option>
-                            <option value = "DESC"> DESC</option>
+                            ORDER BY: <select name="ascend" size=1>
+                            <option value= "ASC" '.(!strcmp($ascend,"ASC")?'selected':'').'> ASC</option>
+                            <option value="DESC" '.(!strcmp($ascend,"DESC")?'selected':'').'> DESC</option>
                             </select>
                         </td>
                         <td>
@@ -120,12 +122,12 @@
                             $stmt = $stmt." WHERE TypeID=10300";
                         }
                     }
-                    if(!empty($sort)&& $_POST["orderby"] == "ASC"){
+                    if($ascend == "ASC"){
                         $stmt = $stmt." ORDER BY ".$sort;
-                         $stmt = $stmt. " ASC";
+                        $stmt = $stmt. " ASC";
                     }
                     else{
-                         $stmt = $stmt." ORDER BY ".$sort;
+                        $stmt = $stmt." ORDER BY ".$sort;
                         $stmt = $stmt. " DESC";
                     }
                 }
@@ -177,6 +179,5 @@
                 echo '</table>';
             }else{echo '<h1>NO CONNECTION!</h1>';}
         ?>
-        </a>
     </body>
 </html>
