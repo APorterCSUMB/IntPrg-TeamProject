@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 <?php session_start();?>
-=======
->>>>>>> master
 <!DOCTYPE HTML>
 <html>
     <head>
