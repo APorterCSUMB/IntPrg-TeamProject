@@ -1,13 +1,16 @@
+
+
+
 <?php
 
     // NO TEAM MEMBER SHALL EDIT THIS FILE WITHOUT CONFERENCING THE REST OF THE TEAM FIRST
     // YOU WILL BE FIRED AND WE WILL TAKE BACK ALL OF YOUR BONUS PAY FROM THE LAST SIX MONTHS
     
-    $host = 'intprg-wspace-aporter87.c9users.io';
+    $host = getenv('IP');
     $port = 3306;
     $db = "TeamProject";
-    $user = "aporter87";
-    $pass = "";
+    $user = "agonz8849";
+    $pass = "GBABalo";
     $sql = '**NO DB HANDLE**';
     $flag = false;
     try {
