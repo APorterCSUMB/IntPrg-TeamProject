@@ -14,6 +14,8 @@
                 $sortTmp = ($_POST["sort"]);
                 $priceTmp = $_POST["price"];
                 $healthyTmp = $_POST["healthy"];
+                $lowCal = $_POST["lowCal"];
+                $fullMeal = $_POST["fullMeal"];
                 
                 // ERROR BLOCK, ALL ERRORS SET CUSTOM ERROR MESSAGES
                 // - SORT PARSING -
@@ -31,6 +33,16 @@
                     $healthy = 'set';
                 }
                 else{$healthy = "";}
+                
+                if(!strcmp($lowCal, 'set')){
+                    $lowCal = 'set';
+                }
+                else{$lowCal = "";}
+                
+                if(!strcmp($fullMeal, 'set')){
+                    $fullMeal = 'set';
+                }
+                else{$fullMeal = "";}
                 
                 
             }
@@ -55,7 +67,13 @@
                             FILTER BY:<br><br>
                             Max Price: $<input type="text" name="price" style="width:50px" value='.($price?$price:'').'>
                             <br><br>
-                            Healthy Choice: <input type="checkbox" name="healthy" value="set" '.(!strcmp($healthyTmp, 'set')?'checked':'').'>
+                            <fieldset>
+                                <legend>Filter By:</legend>
+                                Healthy Choice: <input type="checkbox" name="healthy" value="set" '.(!strcmp($healthyTmp, 'set')?'checked':'').'><br>
+                                Low Calorie Choice: <input type="checkbox" name="lowCal" value="set" '.(!strcmp($lowCal, 'set')?'checked':'').'><br>
+                                Full Meal Choice: <input type="checkbox" name="fullMeal" value="set" '.(!strcmp($fullMeal, 'set')?'checked':'').'>
+                            </fieldset>
+                            
                         </td>
                         <td>
                             <input type="submit" value="SORT THE MENU">
@@ -78,6 +96,24 @@
                         }
                         else{
                             $stmt = $stmt." WHERE healthyChoice=1";
+                            $flag = true;
+                        }
+                    }
+                    if(!empty($lowCal)){
+                        if($flag){
+                            $stmt = $stmt." AND calories < 151";
+                        }
+                        else{
+                            $stmt = $stmt." WHERE calories < 151";
+                            $flag = true;
+                        }
+                    }
+                    if(!empty($fullMeal)){
+                        if($flag){
+                            $stmt = $stmt." AND TypeID=10300";
+                        }
+                        else{
+                            $stmt = $stmt." WHERE TypeID=10300";
                         }
                     }
                     if(!empty($sort)){
